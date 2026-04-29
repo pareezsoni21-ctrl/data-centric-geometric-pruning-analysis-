@@ -26,12 +26,14 @@ High-confidence predictions indicate that the model is certain about its output,
 ## Phase 3: Data Pruning and Experiments
 In this phase, low-confidence samples were removed from the training dataset. The idea was to eliminate data points that introduce uncertainty and evaluate how this affects performance.
 Multiple pruning levels were tested by removing different numbers of low-confidence samples: 10, 30, 50, 100, and 150. For each configuration, the model was retrained and evaluated on the same test set to ensure consistency.
+
 ![Accuracy](accuracy_vs_pruning.png)
 
 The results showed that removing a small number of uncertain samples improved accuracy. However, removing too many samples led to a decline in performance, indicating that excessive pruning removes useful information along with noise.
 
 ## Phase 4: Geometric Interpretation
 Low-confidence samples can be understood geometrically as points lying near decision boundaries in the feature space. These are regions where class overlap occurs and the model finds it difficult to make clear distinctions.
+
 ![Confusing Points](confusing_points_advanced.png)
 
 By removing these boundary samples, the decision regions become clearer and more stable, leading to improved classification performance.
